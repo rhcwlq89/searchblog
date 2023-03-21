@@ -1,7 +1,6 @@
 package hj.lee.searchblog.controller;
 
-
-import hj.lee.searchblog.contorller.BlogController;
+import hj.lee.searchblog.contorller.PopularController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +14,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-class BlogControllerTest {
+class PopularControllerTest {
 
     @Autowired
-    BlogController blogController;
+    PopularController popularController;
 
     private MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(blogController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(popularController).build();
     }
 
     @Test
-    public void searchBlogTest() throws Exception {
-        ResultActions actions = mockMvc.perform(get("/"));
+    public void getPopularTest() throws Exception {
+        ResultActions actions = mockMvc.perform(get("/popular"));
         actions.andExpect(status().isOk()).andExpect(content().string("ok"));
     }
-
-
 }
