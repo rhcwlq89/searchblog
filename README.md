@@ -9,5 +9,5 @@ http://localhost:8080/docs/index.html
 implementation 'org.springframework.boot:spring-boot-starter-webflux'
 web-client 사용을 위해 추가
 
-
-
+## jar 경로
+https://github.com/rhcwlq89/searchblog/raw/master/SearchBlog-0.0.1-SNAPSHOT.jar
