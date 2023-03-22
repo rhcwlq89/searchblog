@@ -39,7 +39,7 @@ public class BlogControllerDoc {
         MockHttpServletRequestBuilder builder = get("/blog")
                 .param("query", "111")
                 .param("page", "1")
-                .param("size", "10")
+                .param("size", "1")
                 .param("sort", SortType.ACCURACY.name());
 
         ResultActions resultActions = mockMvc.perform(builder);
@@ -59,16 +59,17 @@ public class BlogControllerDoc {
                                 ),
                                 responseFields(
                                         fieldWithPath("meta").type(JsonFieldType.OBJECT).description(""),
-                                        fieldWithPath("meta.total_count").type(JsonFieldType.NUMBER).description(""),
-                                        fieldWithPath("meta.pageable_count").type(JsonFieldType.NUMBER).description(""),
-                                        fieldWithPath("meta.is_end").type(JsonFieldType.BOOLEAN).description(""),
+                                        fieldWithPath("meta.total_count").type(JsonFieldType.NUMBER).description("검색된 문서 수"),
+                                        fieldWithPath("meta.pageable_count").type(JsonFieldType.NUMBER).description("total_count 중 노출 가능 문서 수"),
+                                        fieldWithPath("meta.is_end").type(JsonFieldType.BOOLEAN).description("현재 페이지가 마지막 페이지인지 여부, 값이 false면 page를 증가시켜 다음 페이지를 요청할 수 있음"),
                                         fieldWithPath("documents").type(JsonFieldType.ARRAY).description(""),
-                                        fieldWithPath("documents[].title").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("documents[].contents").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("documents[].url").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("documents[].blogname").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("documents[].thumbnail").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("documents[].datetime").description("")
+                                        fieldWithPath("documents[].title").type(JsonFieldType.STRING).description("문서 제목"),
+                                        fieldWithPath("documents[].contents").type(JsonFieldType.STRING).description("문서 본문 중 일부"),
+                                        fieldWithPath("documents[].url").type(JsonFieldType.STRING).description("문서 URL"),
+                                        fieldWithPath("documents[].blogname").type(JsonFieldType.STRING).description("블로그명"),
+                                        fieldWithPath("documents[].thumbnail").type(JsonFieldType.STRING).description("썸네일"),
+                                        fieldWithPath("documents[].datetime").description("문서 글 작성시간, ISO 8601\n" +
+                                                "[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].000+[tz]")
                                 )
                         )
                 );

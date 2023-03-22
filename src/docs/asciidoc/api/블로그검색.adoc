@@ -1,0 +1,23 @@
+link:../index.html[돌아가기]
+
+:blog-adoc-path: {snippets}/blog-controller-doc/search-blog
+
+== 블로그 검색 API
+
+[[m-api]]
+== API
+
+=== Curl
+include::{blog-adoc-path}/curl-request.adoc[]
+
+=== Request
+include::{blog-adoc-path}/http-request.adoc[]
+
+=== Query parameters
+include::{blog-adoc-path}/query-parameters.adoc[]
+
+=== Response Body
+include::{blog-adoc-path}/http-response.adoc[]
+
+=== Response Fields (Data)
+include::{blog-adoc-path}/response-fields.adoc[]

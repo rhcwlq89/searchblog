@@ -1,0 +1,20 @@
+link:../index.html[돌아가기]
+
+:popular-adoc-path: {snippets}/popular-controller-doc/get-popular
+
+== 블로그 검색 API
+
+[[m-api]]
+== API
+
+=== Curl
+include::{popular-adoc-path}/curl-request.adoc[]
+
+=== Request
+include::{popular-adoc-path}/http-request.adoc[]
+
+=== Response Body
+include::{popular-adoc-path}/http-response.adoc[]
+
+=== Response Fields (Data)
+include::{popular-adoc-path}/response-fields.adoc[]

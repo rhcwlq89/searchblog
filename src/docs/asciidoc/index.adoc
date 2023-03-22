@@ -1,0 +1,10 @@
+[[introduction]]
+== Blog Search API
+
+[cols="1,8,4"]
+|===
+| METHOD | API 주소 | 설명
+
+| GET | link:api/블로그검색.html#[blog]  | 블로그 검색
+| GET | link:api/인기검색어.html#[popular]  | 인기 검색어 조회
+|===

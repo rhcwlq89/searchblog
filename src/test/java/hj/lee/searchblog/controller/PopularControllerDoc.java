@@ -52,10 +52,10 @@ public class PopularControllerDoc {
                                 preprocessRequest(prettyPrint()),
                                 preprocessResponse(prettyPrint()),
                                 responseFields(
-                                        fieldWithPath("total_count").type(JsonFieldType.NUMBER).description(""),
+                                        fieldWithPath("total_count").type(JsonFieldType.NUMBER).description("인기검색어 (최대 10)"),
                                         fieldWithPath("data").type(JsonFieldType.ARRAY).description(""),
-                                        fieldWithPath("data[].term").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("data[].search_count").type(JsonFieldType.NUMBER).description("")
+                                        fieldWithPath("data[].term").type(JsonFieldType.STRING).description("검색어"),
+                                        fieldWithPath("data[].search_count").type(JsonFieldType.NUMBER).description("조회수")
                                 )
                         )
                 );
