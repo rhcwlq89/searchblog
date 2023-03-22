@@ -2,8 +2,10 @@
 blog api
 
 ## API restdoc
-jar 실행 후
+1. jar 실행 후
 http://localhost:8080/docs/index.html
+2. 혹은
+src/main/resources/static/docs/index.html
 
 ## 추가 라이브러리
 implementation 'org.springframework.boot:spring-boot-starter-webflux'
