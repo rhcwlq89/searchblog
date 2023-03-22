@@ -8,10 +8,10 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public enum SortType {
-    ACCURACY("accuracy", List.of("kakao"), "정확도순"),
-    RECENCY("recency", List.of("kakao"), "최신순");
+    ACCURACY("accuracy", "sim", "정확도순"),
+    RECENCY("recency", "date", "최신순");
 
-    private String sortName;
-    private List<String> target;
+    private String kakaoSortName;
+    private String naverSortName;
     private String description;
 }

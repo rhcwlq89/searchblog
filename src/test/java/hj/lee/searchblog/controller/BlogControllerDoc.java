@@ -54,7 +54,7 @@ public class BlogControllerDoc {
                                     parameterWithName("query").description("검색어"),
                                     parameterWithName("page").description("페이지 번호 : 기본값 1").optional(),
                                     parameterWithName("size").description("페이지 사이즈 : 기본값 10").optional(),
-                                    parameterWithName("sort").description("정렬(정확도순=ACCURACY, 최신순=RECENCY) : 기본값 ACCURACY")
+                                    parameterWithName("sort").description("정렬 - 내림차순 (정확도순=ACCURACY, 최신순=RECENCY) : 기본값 ACCURACY")
                                             .optional()
                                 ),
                                 responseFields(

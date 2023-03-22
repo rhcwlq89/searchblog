@@ -5,14 +5,13 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 public class BlogSearchRes {
-    private Meta meta;
-    private List<Document> documents;
+    protected Meta meta;
+    protected List<Document> documents;
 
     @Getter
     @Setter

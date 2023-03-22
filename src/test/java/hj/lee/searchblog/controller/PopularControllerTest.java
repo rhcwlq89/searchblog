@@ -27,7 +27,7 @@ class PopularControllerTest {
     }
 
     @Test
-    public void getPopularTest() throws Exception {
+    public void getPopularSimpleTest() throws Exception {
         ResultActions actions = mockMvc.perform(get("/popular"));
         actions.andExpect(status().isOk());
     }
