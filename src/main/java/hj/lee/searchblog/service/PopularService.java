@@ -17,11 +17,11 @@ public class PopularService {
 
     private final PopularSearchRepository popularSearchRepository;
 
-    public void add(String query) {
+    public PopularSearch add(String query) {
         PopularSearch popularSearch = popularSearchRepository.findByTerm(query)
                 .orElse(PopularSearch.builder().term(query).count(0l).build());
         popularSearch.increaseCount();
-        popularSearchRepository.save(popularSearch);
+        return popularSearchRepository.save(popularSearch);
     }
 
     public PopularSearchTermRes list() {

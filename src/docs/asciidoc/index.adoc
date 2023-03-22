@@ -1,5 +1,6 @@
 [[introduction]]
 == Blog Search API
+오픈 API를 활용환 블로그 검색
 
 [cols="1,8,4"]
 |===

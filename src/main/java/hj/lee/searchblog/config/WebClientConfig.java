@@ -15,7 +15,7 @@ public class WebClientConfig {
     public WebClient kakaoClient() {
         return WebClient
                 .builder()
-                .baseUrl("https://dapi.kakao.com/v2/search1")
+                .baseUrl("https://dapi.kakao.com/v2/search")
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "KakaoAK 0524ff4c49b811c947700a679659112c")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
