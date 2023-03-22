@@ -22,7 +22,7 @@ public class BlogSearchRes {
         private String url;
         private String blogname;
         private String thumbnail;
-        private String dateTime;
+        private String datetime;
     }
 
     @Getter

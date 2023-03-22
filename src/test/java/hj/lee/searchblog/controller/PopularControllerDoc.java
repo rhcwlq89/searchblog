@@ -33,7 +33,7 @@ public class PopularControllerDoc {
     @BeforeEach
     public void searchBlog() throws Exception {
         MockHttpServletRequestBuilder builder = get("/blog")
-                .param("query", "111")
+                .param("query", "인기 검색어")
                 .param("page", "1")
                 .param("size", "10")
                 .param("sort", SortType.ACCURACY.name());
