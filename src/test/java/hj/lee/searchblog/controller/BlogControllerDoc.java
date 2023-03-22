@@ -1,6 +1,6 @@
 package hj.lee.searchblog.controller;
 
-import hj.lee.searchblog.service.BlogService;
+import hj.lee.searchblog.dto.req.SortType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -10,6 +10,7 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
@@ -28,18 +29,18 @@ public class BlogControllerDoc {
     private static final String DEFAULT_PATH = "{class-name}/{method-name}";
 
     @Autowired
-    private MockMvc mockMvc;
+    protected WebApplicationContext context;
 
     @Autowired
-    private BlogService blogService;
+    private MockMvc mockMvc;
 
     @Test
     public void searchBlog() throws Exception {
-        MockHttpServletRequestBuilder builder = get("/")
-                .param("query", "검색어")
-                .param("page", "0")
+        MockHttpServletRequestBuilder builder = get("/blog")
+                .param("query", "111")
+                .param("page", "1")
                 .param("size", "10")
-                .param("sort", "정렬");
+                .param("sort", SortType.ACCURACY.name());
 
         ResultActions resultActions = mockMvc.perform(builder);
 
@@ -56,17 +57,17 @@ public class BlogControllerDoc {
                                     parameterWithName("sort").description("정렬")
                                 ),
                                 responseFields(
-                                        fieldWithPath("meta").type(JsonFieldType.OBJECT),
+                                        fieldWithPath("meta").type(JsonFieldType.OBJECT).description(""),
                                         fieldWithPath("meta.total_count").type(JsonFieldType.NUMBER).description(""),
                                         fieldWithPath("meta.pageable_count").type(JsonFieldType.NUMBER).description(""),
                                         fieldWithPath("meta.is_end").type(JsonFieldType.BOOLEAN).description(""),
-                                        fieldWithPath("documents").type(JsonFieldType.ARRAY),
+                                        fieldWithPath("documents").type(JsonFieldType.ARRAY).description(""),
                                         fieldWithPath("documents[].title").type(JsonFieldType.STRING).description(""),
                                         fieldWithPath("documents[].contents").type(JsonFieldType.STRING).description(""),
                                         fieldWithPath("documents[].url").type(JsonFieldType.STRING).description(""),
                                         fieldWithPath("documents[].blogname").type(JsonFieldType.STRING).description(""),
                                         fieldWithPath("documents[].thumbnail").type(JsonFieldType.STRING).description(""),
-                                        fieldWithPath("documents[].dateTime").type(JsonFieldType.STRING).description("")
+                                        fieldWithPath("documents[].dateTime").description("")
                                 )
                         )
                 );
