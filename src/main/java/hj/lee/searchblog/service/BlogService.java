@@ -5,11 +5,9 @@ import hj.lee.searchblog.dto.res.BlogSearchRes;
 import hj.lee.searchblog.dto.res.NaverBlogSearchRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.Exceptions;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
