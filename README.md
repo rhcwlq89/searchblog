@@ -4,7 +4,7 @@ blog api
 ## API restdoc
 1. jar 실행 후
 http://localhost:8080/docs/index.html
-2. 혹은
+2. 해당 repository에서 
 src/main/resources/static/docs/index.html
 
 ## 추가 라이브러리
