@@ -20,7 +20,7 @@ public class BlogService {
 
     private final PopularService popularService;
 
-    public Mono<BlogSearchRes> searchBlog(String query, SortType sortType, Pageable pageable) {
+    public BlogSearchRes searchBlog(String query, SortType sortType, Pageable pageable) {
         popularService.add(query);
         Mono<BlogSearchRes> blogSearchResMono = kakaoClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -32,7 +32,7 @@ public class BlogService {
                         .build())
                 .retrieve()
                 .bodyToMono(BlogSearchRes.class);
-        return blogSearchResMono;
+        return blogSearchResMono.block();
     }
 
 }

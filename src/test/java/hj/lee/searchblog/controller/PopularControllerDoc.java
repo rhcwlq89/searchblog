@@ -1,7 +1,8 @@
 package hj.lee.searchblog.controller;
 
-import hj.lee.searchblog.service.BlogService;
-import hj.lee.searchblog.service.PopularService;
+import hj.lee.searchblog.dto.req.SortType;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -14,11 +15,8 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
-import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.queryParameters;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,28 +30,34 @@ public class PopularControllerDoc {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private BlogService blogService;
+    @BeforeEach
+    public void searchBlog() throws Exception {
+        MockHttpServletRequestBuilder builder = get("/blog")
+                .param("query", "111")
+                .param("page", "1")
+                .param("size", "10")
+                .param("sort", SortType.ACCURACY.name());
 
-    @Autowired
-    private PopularService popularService;
+        mockMvc.perform(builder);
+    }
+
     @Test
     public void getPopular() throws Exception {
         ResultActions resultActions = mockMvc.perform(get("/popular"));
 
-//        resultActions.andExpect(status().isOk())
-//                .andDo(
-//                        document(
-//                                DEFAULT_PATH,
-//                                preprocessRequest(prettyPrint()),
-//                                preprocessResponse(prettyPrint()),
-//                                responseFields(
-//                                        fieldWithPath("meta").type(JsonFieldType.OBJECT),
-//                                        fieldWithPath("meta.total_count").type(JsonFieldType.NUMBER).description(""),
-//                                        fieldWithPath("meta.pageable_count").type(JsonFieldType.NUMBER).description(""),
-//                                        fieldWithPath("meta.is_end").type(JsonFieldType.BOOLEAN).description("")
-//                                )
-//                        )
-//                );
+        resultActions.andExpect(status().isOk())
+                .andDo(
+                        document(
+                                DEFAULT_PATH,
+                                preprocessRequest(prettyPrint()),
+                                preprocessResponse(prettyPrint()),
+                                responseFields(
+                                        fieldWithPath("total_count").type(JsonFieldType.NUMBER).description(""),
+                                        fieldWithPath("data").type(JsonFieldType.ARRAY).description(""),
+                                        fieldWithPath("data[].term").type(JsonFieldType.STRING).description(""),
+                                        fieldWithPath("data[].search_count").type(JsonFieldType.NUMBER).description("")
+                                )
+                        )
+                );
     }
 }

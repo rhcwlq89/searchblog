@@ -10,7 +10,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,6 +21,6 @@ public class BlogController {
     public BlogSearchRes searchBlog(@RequestParam String query,
                                           @RequestParam(name = "sort", defaultValue = "ACCURACY") SortType sortType,
                                           @PageableDefault(page = 1) Pageable pageable) {
-        return blogService.searchBlog(query, sortType, pageable).block();
+        return blogService.searchBlog(query, sortType, pageable);
     }
 }
