@@ -16,14 +16,7 @@ public class PopularController {
     private final PopularService popularService;
 
     @GetMapping(path = "/popular")
-    public ResponseEntity<String> getPopular() {
-        List<PopularSearch> list = popularService.list();
-        list.forEach(popularSearch -> {
-            System.out.println("popularSearch.getId() = " + popularSearch.getId());
-            System.out.println("popularSearch.getTerm() = " + popularSearch.getTerm());
-            System.out.println("popularSearch.getCount() = " + popularSearch.getCount());
-        });
-
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<List<PopularSearch>> getPopular() {
+        return ResponseEntity.ok(popularService.list());
     }
 }
